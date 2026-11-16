@@ -1,0 +1,1078 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nails2You Moema · versão de teste</title>
+<meta name="description" content="Versão de teste da página da Nails2You Moema: unhas em gel, alongamento FASTGEL, blindagem, banho de gel, manicure e pedicure. Algumas informações são fictícias.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#151414">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Italiana&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sites-incriveis.css">
+<style>
+@property --luz { syntax: "<color>"; inherits: true; initial-value: #8B1E35; }
+
+:root {
+  --preto: #151414;
+  --preto-2: #1F1B1B;
+  --vinho: #8B1E35;
+  --rose: #E4C5B9;
+  --creme: #F6EDE8;
+  --creme-2: #EFE2DB;
+  --nude: #947D72;
+  --nude-texto: #6F5B52;
+  --tinta: #2C2022;
+  --branco: #FFFBF9;
+  --claro: #F3ECE8;
+  --luz: #8B1E35;
+  --f-larga: "Archivo", system-ui, sans-serif;
+  --f-serif: "Italiana", Georgia, serif;
+  --f-texto: "DM Sans", system-ui, sans-serif;
+  --gutter: clamp(16px, 3vw, 40px);
+  --curva: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { overflow-x: clip; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--creme);
+  color: var(--tinta);
+  font-family: var(--f-texto);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3, p, figure { margin: 0; }
+:focus-visible { outline: 2px solid var(--vinho); outline-offset: 3px; border-radius: 6px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.larga {
+  font-family: var(--f-larga);
+  font-stretch: 125%;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.serif { font-family: var(--f-serif); text-transform: none; font-weight: 400; letter-spacing: 0; }
+
+/* ---------- pílulas (botões) ---------- */
+.acoes { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.pilula {
+  display: inline-flex; align-items: center; gap: 14px;
+  min-height: 60px; padding: 8px 8px 8px 24px;
+  border-radius: 999px;
+  font: 500 15px/1 var(--f-larga); font-stretch: 110%;
+  text-transform: uppercase; letter-spacing: 0.02em;
+  text-decoration: none; white-space: nowrap;
+  transition: transform 0.35s var(--curva), background 0.3s, box-shadow 0.3s;
+}
+.pilula:hover { transform: translateY(-2px); }
+.pilula__icone { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; flex: none; }
+.pilula svg { width: 18px; height: 18px; }
+.pilula--clara { background: #EFE8E5; color: var(--preto); }
+.pilula--clara .pilula__icone { background: var(--preto); color: #fff; }
+.pilula--escura { background: rgba(255,255,255,0.05); color: #EEE6E2; border: 1px solid rgba(255,255,255,0.18); padding: 8px 24px; }
+.pilula--escura svg { width: 20px; height: 20px; }
+.pilula--preta { background: var(--preto); color: #fff; box-shadow: 0 14px 30px -14px rgba(21,20,20,0.6); }
+.pilula--preta .pilula__icone { background: #fff; color: var(--preto); }
+.pilula--branca { background: var(--branco); color: var(--tinta); padding: 8px 24px; box-shadow: 0 14px 30px -18px rgba(44,32,34,0.35); }
+.pilula--branca svg { width: 20px; height: 20px; }
+.pilula--vinho { background: var(--vinho); color: #fff; }
+.pilula--vinho .pilula__icone { background: #fff; color: var(--vinho); }
+
+.selo-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: 999px;
+  font: 500 13px/1 var(--f-texto); letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--vinho);
+  background: linear-gradient(180deg, #FBE9EC, #F5D9DE);
+  box-shadow: inset 0 0 0 1px rgba(139,30,53,0.16), 0 6px 18px -10px rgba(139,30,53,0.5);
+}
+.selo-pill svg { width: 16px; height: 16px; }
+
+.sobrelinha { font: 500 12px/1.2 var(--f-texto); letter-spacing: 0.18em; text-transform: uppercase; color: var(--nude-texto); }
+
+/* ---------- topo fixo ---------- */
+.topo {
+  position: fixed; inset: 0 0 auto 0; z-index: 50;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 22px var(--gutter);
+  pointer-events: none; color: var(--tinta);
+  transition: color 0.35s;
+}
+.topo > * { pointer-events: auto; }
+.topo-claro .topo { color: var(--claro); }
+.mini {
+  display: inline-flex; align-items: center; gap: 2px;
+  font: 700 22px/1 var(--f-larga); font-stretch: 125%; text-decoration: none;
+}
+.mini i {
+  font: 400 15px/1 var(--f-serif); font-style: normal; color: #fff;
+  width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center;
+  background: radial-gradient(circle at 35% 30%, #B23F59, var(--vinho) 60%, #5A1022);
+}
+.topo__menu {
+  width: 48px; height: 48px; border: 0; background: none; color: inherit; cursor: pointer;
+  display: grid; place-content: center; gap: 7px; padding: 0;
+}
+.topo__menu span:not(.sr-only) { display: block; width: 28px; height: 2px; background: currentColor; border-radius: 2px; }
+.topo__menu span:nth-child(2) { width: 20px; justify-self: end; }
+
+/* ---------- aviso de teste ---------- */
+.aviso {
+  position: fixed; left: 12px; bottom: 12px; z-index: 45;
+  padding: 7px 12px; border-radius: 999px;
+  font: 500 11px/1 var(--f-texto); letter-spacing: 0.12em; text-transform: uppercase;
+  color: #F6E6E0; background: rgba(21,20,20,0.78);
+  backdrop-filter: blur(6px);
+}
+
+/* ---------- luz de palco (reaproveitada) ---------- */
+.luz {
+  position: absolute; left: 50%; bottom: 0;
+  width: var(--luz-w, min(62vw, 880px)); height: var(--luz-h, 56vh);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.luz__cone {
+  position: absolute; inset: 0;
+  background: radial-gradient(50% 100% at 50% 100%,
+    color-mix(in srgb, var(--luz) 78%, transparent) 0%,
+    color-mix(in srgb, var(--luz) 26%, transparent) 42%,
+    transparent 72%);
+}
+.luz__linha {
+  position: absolute; left: 3%; right: 3%; bottom: 0; height: 3px; border-radius: 3px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--luz) 45%, #fff) 18%, #FFF4EF 50%, color-mix(in srgb, var(--luz) 45%, #fff) 82%, transparent);
+  box-shadow: 0 0 22px 3px color-mix(in srgb, var(--luz) 75%, transparent), 0 -8px 46px 10px color-mix(in srgb, var(--luz) 40%, transparent);
+}
+.luz__chao {
+  position: absolute; left: -20%; right: -20%; top: 100%; height: 40vh;
+  background: linear-gradient(180deg, rgba(8,7,7,0.9), rgba(8,7,7,0) 85%);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 28%, #000 72%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 28%, #000 72%, transparent);
+}
+
+.grao::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.09; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ---------- 1. capa ---------- */
+.capa {
+  position: relative; min-height: 100vh; min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-rows: 1fr auto;
+  column-gap: 24px; row-gap: 28px;
+  padding: 104px var(--gutter) 30px;
+  background: radial-gradient(120% 90% at 50% 0%, #2A2020 0%, var(--preto) 62%);
+  color: var(--claro);
+  overflow: hidden;
+  --luz: #9E2A43;
+}
+.capa__nav {
+  position: absolute; top: 34px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 10px; align-items: center; white-space: nowrap;
+  font: 500 13px/1 var(--f-larga); font-stretch: 105%; text-transform: uppercase; letter-spacing: 0.02em;
+}
+.capa__nav a { text-decoration: none; opacity: 0.86; }
+.capa__nav a:hover { opacity: 1; }
+.capa__nav i { width: 3px; height: 3px; border-radius: 50%; background: currentColor; opacity: 0.6; }
+.capa__titulo { grid-column: 1; grid-row: 1; align-self: center; position: relative; z-index: 2; }
+.capa h1 {
+  font: 400 clamp(26px, 2.5vw, 40px)/1.12 var(--f-larga); font-stretch: 112%;
+  text-transform: uppercase; letter-spacing: -0.015em; max-width: 13ch;
+}
+.capa h1 .serif { display: inline-block; font-size: 1.42em; line-height: 0.9; color: var(--rose); }
+.capa__marca { grid-column: 2; grid-row: 1; align-self: center; justify-self: center; position: relative; padding-bottom: 64px; }
+.capa__marca .luz { bottom: 40px; --luz-w: min(64vw, 900px); --luz-h: 62vh; animation: respira 7s ease-in-out infinite; }
+@keyframes respira { 50% { opacity: 0.78; } }
+.mono {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; gap: 0.05em;
+  font: 300 clamp(120px, 16vw, 270px)/0.8 var(--f-larga); font-stretch: 125%;
+}
+.mono__letra {
+  background: linear-gradient(180deg, #4A3936 0%, #A77F73 46%, #F6D9CD 82%, #FFF0EA 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  padding: 0.06em 0;
+}
+.mono__dois {
+  position: relative; width: 0.8em; height: 0.8em; border-radius: 50%;
+  display: grid; place-items: center; flex: none;
+  background: radial-gradient(circle at 34% 28%, #D6647E 0%, var(--vinho) 40%, #4A0D1A 82%);
+  box-shadow: inset 0 -0.05em 0.1em rgba(0,0,0,0.55), inset 0 0.03em 0.05em rgba(255,255,255,0.35), 0 0.1em 0.35em rgba(158,42,67,0.55);
+}
+.mono__dois span { font: 400 0.6em/1 var(--f-serif); color: #FFEDE6; transform: translateY(0.02em); }
+.mono__dois::after {
+  content: ""; position: absolute; left: 20%; right: 26%; top: 9%; height: 32%; border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0));
+}
+.capa__texto {
+  grid-column: 3; grid-row: 1; align-self: center; justify-self: end;
+  max-width: 330px; text-align: right; position: relative; z-index: 2;
+  font-size: 16px; color: rgba(243,236,232,0.82);
+}
+.capa__base { grid-column: 1 / -1; grid-row: 2; display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; position: relative; z-index: 2; }
+.clientes { display: flex; align-items: center; gap: 16px; }
+.clientes b { font: 500 20px/1 var(--f-larga); font-stretch: 110%; }
+.clientes small { display: block; font-size: 12px; color: rgba(243,236,232,0.6); margin-top: 4px; }
+.avatares { display: flex; }
+.avatar {
+  width: 44px; height: 44px; border-radius: 50%; flex: none;
+  display: grid; place-items: center;
+  font: 600 13px/1 var(--f-texto); letter-spacing: 0.04em; color: #fff;
+  background: var(--c, var(--vinho));
+  border: 2px solid var(--preto);
+}
+.avatares .avatar + .avatar { margin-left: -12px; }
+
+/* ---------- 2. painel ---------- */
+.painel-cena { background: var(--preto); }
+.painel-cena .fx-palco { perspective: 1600px; }
+.painel {
+  --p: min(1, calc(var(--progresso, 1) / 0.72));
+  width: min(1280px, calc(100vw - 2 * var(--gutter)));
+  height: min(82vh, 760px);
+  background: var(--creme); border-radius: 30px; padding: 16px;
+  display: flex; flex-direction: column; gap: 14px;
+  transform-origin: 50% 100%;
+  transform: rotateX(calc((1 - var(--p)) * 30deg)) translateY(calc((1 - var(--p)) * 10vh)) scale(calc(0.8 + var(--p) * 0.2));
+  box-shadow: 0 50px 120px -30px rgba(0,0,0,0.7);
+}
+.painel__topo { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 6px 8px 0; flex-wrap: wrap; }
+.painel__topo h2 { font: 600 clamp(18px, 1.8vw, 26px)/1.1 var(--f-larga); font-stretch: 125%; text-transform: uppercase; }
+.painel__topo p { font-size: 14px; color: var(--nude-texto); }
+.painel__grade {
+  flex: 1; min-height: 0;
+  display: grid; gap: 12px;
+  grid-template-columns: 1.3fr 1fr 1fr; grid-template-rows: 1fr 1fr;
+}
+.foto { position: relative; overflow: hidden; border-radius: 20px; background: var(--creme-2); min-height: 0; }
+.foto img { width: 100%; height: 100%; object-fit: cover; }
+.foto figcaption {
+  position: absolute; inset: auto 0 0 0; padding: 40px 18px 16px;
+  background: linear-gradient(180deg, transparent, rgba(21,20,20,0.72));
+  color: #fff; display: grid; gap: 6px;
+}
+.foto figcaption b { font: 600 clamp(15px, 1.4vw, 21px)/1.1 var(--f-larga); font-stretch: 115%; text-transform: uppercase; }
+.etiqueta {
+  justify-self: start; font: 500 11.5px/1 var(--f-texto); letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,0.16); backdrop-filter: blur(6px);
+}
+.foto--a { grid-row: 1 / 3; }
+.foto--d { grid-column: 2 / 4; }
+
+/* ---------- 3. texto que acende ---------- */
+.acende-cena { background: var(--creme); }
+.acende {
+  width: min(1320px, 100%); padding: 0 var(--gutter);
+  font: 400 clamp(30px, 4.3vw, 66px)/1.16 var(--f-texto); letter-spacing: -0.025em;
+}
+.acende b { font-weight: 600; color: var(--vinho); }
+.acende .w { opacity: clamp(0.14, calc(var(--progresso, 1) * var(--n) * 1.35 - var(--i)), 1); }
+
+/* ---------- 4. três cuidados ---------- */
+.secao { padding: clamp(80px, 12vh, 140px) var(--gutter); }
+.cabeca { display: grid; justify-items: center; text-align: center; gap: 22px; margin-bottom: clamp(40px, 6vh, 64px); }
+.cabeca h2, .h2 {
+  font: 500 clamp(30px, 4vw, 60px)/1 var(--f-larga); font-stretch: 125%; text-transform: uppercase; letter-spacing: -0.02em;
+  max-width: 18ch;
+}
+.h2 .serif, .cabeca h2 .serif { font-size: 1.12em; color: var(--vinho); }
+.cuidados__grade { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; max-width: 1300px; margin: 0 auto; }
+.cartao { background: var(--branco); border-radius: 28px; padding: 12px 12px 28px; display: grid; gap: 18px; align-content: start; box-shadow: 0 30px 60px -40px rgba(44,32,34,0.35); }
+.cartao .foto { aspect-ratio: 4 / 3; border-radius: 20px; }
+.cartao h3 { font: 600 20px/1.15 var(--f-larga); font-stretch: 115%; text-transform: uppercase; padding: 0 12px; }
+.cartao p { padding: 0 12px; color: #5B4A4C; font-size: 15.5px; }
+.cuidados .acoes { justify-content: center; margin-top: 40px; }
+
+/* ---------- 5. paredão (pico) ---------- */
+.paredao { background: var(--preto); color: var(--claro); --luz: #8B1E35; transition: --luz 0.9s ease; }
+.paredao[data-etapa="2"] { --luz: #C9A189; }
+.paredao[data-etapa="3"] { --luz: #E6D3E0; }
+.paredao__palco {
+  position: relative; width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: center; gap: clamp(22px, 4vh, 46px);
+  padding: 88px 0 7vh;
+}
+.paredao__topo {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 20px;
+  padding: 0 var(--gutter);
+}
+.paredao__etapas { display: grid; }
+.paredao__etapa { grid-area: 1 / 1; display: grid; gap: 8px; transform: translateY(12px); transition: opacity 0.5s, transform 0.6s var(--curva); }
+.paredao[data-etapa="1"] .paredao__etapa:nth-of-type(1),
+.paredao[data-etapa="2"] .paredao__etapa:nth-of-type(2),
+.paredao[data-etapa="3"] .paredao__etapa:nth-of-type(3) { transform: none; }
+.paredao__num { font: 500 13px/1 var(--f-texto); letter-spacing: 0.16em; color: color-mix(in srgb, var(--luz) 55%, #fff); }
+.paredao__nome { font: 500 clamp(44px, 6.4vw, 100px)/0.86 var(--f-larga); font-stretch: 125%; text-transform: uppercase; letter-spacing: -0.03em; }
+.paredao__desc { font-size: 15px; color: rgba(243,236,232,0.7); max-width: 34ch; }
+.paredao .selo-pill { align-self: start; justify-self: center; }
+.link-seta {
+  justify-self: end; display: inline-flex; gap: 10px; align-items: center;
+  padding-bottom: 10px; border-bottom: 1px solid currentColor;
+  font: 500 14px/1 var(--f-larga); font-stretch: 105%; text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none;
+}
+.link-seta svg { width: 14px; height: 14px; }
+.trilho {
+  --H: min(50vh, 440px); --W: clamp(150px, 14.5vw, 224px);
+  position: relative; z-index: 1;
+  display: flex; align-items: flex-end; gap: 10px;
+  height: var(--H); padding-left: var(--gutter);
+}
+.unha {
+  position: relative; flex: 0 0 var(--W); width: var(--W);
+  height: calc(var(--H) * var(--h, 1));
+  border-radius: 18px; overflow: hidden; background: #2A2323;
+  box-shadow: 0 30px 50px -30px rgba(0,0,0,0.8);
+  transition: transform 0.4s var(--curva);
+}
+.unha:hover { transform: translateY(-8px); }
+.unha img { width: 100%; height: 100%; object-fit: cover; }
+.unha::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(21,20,20,0.35) 0%, transparent 26%, transparent 55%, rgba(21,20,20,0.8) 100%); }
+.unha__tag {
+  position: absolute; z-index: 1; top: 12px; left: 50%; transform: translateX(-50%);
+  font: 500 11px/1 var(--f-texto); letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 5px 9px; border-radius: 999px; background: rgba(255,255,255,0.16); backdrop-filter: blur(6px); white-space: nowrap;
+}
+.unha figcaption {
+  position: absolute; z-index: 1; inset: auto 12px 14px; text-align: center;
+  font: 600 clamp(14px, 1.15vw, 18px)/1.1 var(--f-larga); font-stretch: 112%; text-transform: uppercase;
+}
+.unha__real { display: block; margin-top: 6px; font: 500 11px/1 var(--f-texto); letter-spacing: 0.1em; color: var(--rose); text-transform: none; }
+.unha--inicio { margin-left: clamp(26px, 4vw, 70px); }
+.trilho__fim { flex: 0 0 var(--gutter); height: 1px; }
+.paredao .luz { bottom: 7vh; --luz-w: 120vw; --luz-h: 46vh; }
+.paredao .luz__chao { height: 8vh; }
+
+/* ---------- 6. serviços ---------- */
+.servicos__intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: end; max-width: 1300px; margin: 0 auto clamp(36px, 6vh, 60px); }
+.servicos__intro p { font-size: clamp(17px, 1.4vw, 20px); color: #5B4A4C; max-width: 40ch; justify-self: end; }
+.servicos__grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 1300px; margin: 0 auto; }
+.servico { background: var(--branco); border-radius: 28px; padding: clamp(24px, 3vw, 36px); display: grid; gap: 14px; align-content: start; }
+.servico__topo { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.servico__num { font: 300 34px/1 var(--f-larga); font-stretch: 125%; color: var(--rose); }
+.servico .etiqueta { background: var(--creme); color: var(--nude-texto); backdrop-filter: none; }
+.servico h3 { font: 600 clamp(22px, 2.1vw, 30px)/1.05 var(--f-larga); font-stretch: 120%; text-transform: uppercase; letter-spacing: -0.01em; }
+.servico p { color: #5B4A4C; max-width: 46ch; }
+.servico__base { display: flex; align-items: center; gap: 14px; margin-top: 10px; padding-top: 18px; border-top: 1px solid #EEDFD8; }
+.preco { font-size: 14px; color: var(--nude-texto); }
+.preco b { display: block; font: 600 24px/1.1 var(--f-larga); font-stretch: 110%; color: var(--tinta); }
+.tempo { font-size: 14px; color: var(--nude-texto); padding-left: 14px; border-left: 1px solid #EEDFD8; }
+.seta-circulo {
+  margin-left: auto; width: 52px; height: 52px; border-radius: 50%; flex: none;
+  display: grid; place-items: center; background: var(--preto); color: #fff; text-decoration: none;
+  transition: transform 0.35s var(--curva), background 0.3s;
+}
+.seta-circulo:hover { transform: rotate(45deg); background: var(--vinho); }
+.seta-circulo svg { width: 18px; height: 18px; }
+
+/* ---------- 7. depoimentos ---------- */
+.depos { --fundo: var(--creme-2); background: var(--fundo); }
+.depos__grade { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px; max-width: 1300px; margin: 0 auto; }
+.depo {
+  position: relative; background: var(--branco); border-radius: 26px;
+  padding: 26px 28px 28px; display: grid; gap: 16px; align-content: start;
+}
+.depo--5 { grid-column: span 5; } .depo--7 { grid-column: span 7; } .depo--6 { grid-column: span 6; }
+.depo::before { content: ""; position: absolute; top: -14px; right: -14px; width: 92px; height: 92px; border-radius: 50%; background: var(--fundo); }
+.depo__selo {
+  position: absolute; top: -6px; right: -6px; width: 68px; height: 68px; border-radius: 50%;
+  display: grid; place-items: center; color: #fff;
+  background: radial-gradient(circle at 34% 28%, color-mix(in srgb, var(--selo) 50%, #fff) 0%, var(--selo) 52%, color-mix(in srgb, var(--selo) 65%, #000) 100%);
+  box-shadow: inset 0 -4px 8px rgba(0,0,0,0.25), 0 10px 22px -10px var(--selo);
+}
+.depo__selo svg { width: 30px; height: 30px; }
+.depo header { display: flex; gap: 14px; align-items: center; padding-right: 70px; }
+.depo header b { display: block; font: 600 18px/1.15 var(--f-larga); font-stretch: 108%; }
+.depo header span { font-size: 14px; color: var(--nude-texto); }
+.depo .avatar { width: 54px; height: 54px; border: 0; font-size: 15px; }
+.depo p { color: #4A3B3D; }
+.tag-exemplo { justify-self: start; font: 500 11px/1 var(--f-texto); letter-spacing: 0.14em; text-transform: uppercase; color: var(--nude-texto); padding: 6px 10px; border: 1px dashed #D8C3BA; border-radius: 999px; }
+.depos .cabeca .selo-pill { color: var(--tinta); }
+
+/* ---------- 8. garantia + faixas ---------- */
+.garantia { padding: clamp(80px, 12vh, 130px) 0 clamp(40px, 8vh, 90px); }
+.garantia__topo { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; padding: 0 var(--gutter); margin-bottom: clamp(20px, 5vh, 50px); }
+.garantia__topo p { max-width: 36ch; font-size: 15.5px; }
+.garantia__topo .selo-pill { justify-self: center; }
+.garantia__topo .acoes { justify-self: end; }
+.faixas { overflow: hidden; display: grid; gap: 0.1em; }
+.faixa {
+  display: flex; align-items: center; gap: 0.28em; width: max-content; white-space: nowrap;
+  font: 500 clamp(50px, 8.6vw, 138px)/1.06 var(--f-larga); font-stretch: 125%; text-transform: uppercase; letter-spacing: -0.03em;
+  transform: translateX(calc(-25% + (var(--d, 0.5) - 0.5) * var(--dir) * 34%));
+  will-change: transform;
+}
+.faixa > span:nth-of-type(even) { color: color-mix(in srgb, var(--tinta) 58%, var(--creme)); }
+.faixa svg { width: 0.82em; height: 0.82em; flex: none; color: var(--tinta); }
+.faixa > svg:nth-of-type(even) { color: color-mix(in srgb, var(--tinta) 58%, var(--creme)); }
+
+/* ---------- 9. sobre ---------- */
+.sobre { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 96px); align-items: center; max-width: 1300px; margin: 0 auto; }
+.sobre__foto { border-radius: 999px 999px 28px 28px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--creme-2); }
+.sobre__foto img { width: 100%; height: 100%; object-fit: cover; }
+.sobre__texto { display: grid; gap: 18px; align-content: center; }
+.sobre__texto .h2 { max-width: none; }
+.sobre__cargo { font: 400 clamp(22px, 2vw, 30px)/1.2 var(--f-serif); color: var(--vinho); }
+.sobre__texto > p:not(.sobrelinha):not(.sobre__cargo):not(.nota) { color: #4A3B3D; max-width: 52ch; font-size: 17px; }
+.numeros { list-style: none; margin: 10px 0 0; padding: 22px 0 0; border-top: 1px solid #E5D3CB; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.numeros b { display: block; font: 500 clamp(30px, 3vw, 44px)/1 var(--f-larga); font-stretch: 120%; }
+.numeros li > span { font-size: 14px; color: var(--nude-texto); }
+.nota { font-size: 13px; color: var(--nude-texto); font-style: italic; }
+
+/* ---------- 10. chamada final ---------- */
+.chamada {
+  position: relative; overflow: hidden; text-align: center;
+  background: var(--preto); color: var(--claro);
+  padding: clamp(110px, 18vh, 190px) var(--gutter) clamp(120px, 20vh, 200px);
+  display: grid; justify-items: center; gap: 40px;
+  --luz: #B4566C;
+}
+.chamada h2 { position: relative; z-index: 1; font: 500 clamp(38px, 6.4vw, 104px)/0.96 var(--f-larga); font-stretch: 125%; text-transform: uppercase; letter-spacing: -0.03em; max-width: 14ch; }
+.chamada h2 .serif { display: block; font-size: 1.05em; color: var(--rose); margin-top: 0.08em; }
+.chamada .acoes { position: relative; z-index: 1; justify-content: center; }
+.chamada .luz { bottom: 70px; --luz-w: min(90vw, 1100px); --luz-h: 70%; }
+
+/* ---------- 11. dúvidas ---------- */
+.duvidas { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 5vw, 80px); max-width: 1300px; margin: 0 auto; align-items: start; }
+.duvidas__cab { position: sticky; top: 110px; display: grid; gap: 18px; }
+.lista-duvidas { display: grid; gap: 10px; }
+.lista-duvidas details { background: var(--branco); border-radius: 22px; padding: 0 24px; }
+.lista-duvidas summary {
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 18px;
+  padding: 22px 0; font: 500 17px/1.35 var(--f-texto);
+}
+.lista-duvidas summary::-webkit-details-marker { display: none; }
+.lista-duvidas summary::after {
+  content: "+"; flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--creme); font: 400 22px/1 var(--f-texto); transition: transform 0.35s var(--curva), background 0.3s;
+}
+.lista-duvidas details[open] summary::after { transform: rotate(45deg); background: var(--rose); }
+.lista-duvidas details p { padding: 0 0 22px; color: #5B4A4C; max-width: 60ch; }
+.lista-duvidas .tag-exemplo { display: inline-block; margin-left: 8px; vertical-align: 2px; }
+
+/* ---------- 12. agendar ---------- */
+.agendar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); max-width: 1300px; margin: 0 auto; align-items: center; }
+.agendar__texto { display: grid; gap: 20px; }
+.agendar__texto p { color: #5B4A4C; font-size: 17px; max-width: 40ch; }
+.form { background: var(--preto); color: var(--claro); border-radius: 30px; padding: clamp(24px, 3vw, 40px); display: grid; gap: 18px; }
+.form h3 { font: 500 clamp(22px, 2vw, 28px)/1.1 var(--f-larga); font-stretch: 120%; text-transform: uppercase; }
+.campo { display: grid; gap: 8px; }
+.campo label { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(243,236,232,0.7); }
+.campo input, .campo select {
+  width: 100%; min-height: 56px; padding: 0 20px; border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.05); color: var(--claro);
+  font: 400 16px/1 var(--f-texto); appearance: none;
+}
+.campo select { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23E4C5B9' stroke-width='1.6'><path d='M1 1l5 5 5-5'/></svg>"); background-repeat: no-repeat; background-position: right 20px center; }
+.campo select option { color: var(--tinta); }
+.campo input::placeholder { color: rgba(243,236,232,0.62); }
+.form .pilula { justify-content: space-between; width: 100%; border: 0; cursor: pointer; margin-top: 6px; }
+.form small { font-size: 13px; color: rgba(243,236,232,0.6); }
+.form small a { color: var(--rose); }
+
+/* ---------- rodapé ---------- */
+.rodape { background: var(--preto); color: var(--claro); padding: 70px var(--gutter) 90px; overflow: hidden; }
+.rodape__marca { display: block; font: 600 calc((100vw - 2 * var(--gutter)) / 7.3)/0.85 var(--f-larga); font-stretch: 125%; letter-spacing: -0.04em; text-decoration: none; white-space: nowrap; }
+.rodape__marca i { font-style: normal; color: #D0566F; }
+.rodape__linha { display: flex; flex-wrap: wrap; gap: 18px 40px; justify-content: space-between; margin-top: 40px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,0.12); font-size: 14px; color: rgba(243,236,232,0.75); }
+.rodape__linha a { text-decoration: none; }
+.rodape__linha a:hover { color: #fff; }
+.rodape__nota { margin-top: 26px; font-size: 12.5px; color: rgba(243,236,232,0.5); max-width: 90ch; }
+
+/* ---------- botão flutuante ---------- */
+.flutuante {
+  position: fixed; right: 16px; bottom: 16px; z-index: 44;
+  min-height: 52px; padding: 6px 6px 6px 20px; font-size: 13px;
+  transition: opacity 0.3s, transform 0.35s var(--curva);
+}
+.flutuante .pilula__icone { width: 40px; height: 40px; }
+.sem-flutuante .flutuante { opacity: 0; pointer-events: none; transform: translateY(16px); }
+
+/* ---------- menu ---------- */
+.menu {
+  position: fixed; inset: 0; z-index: 60;
+  display: grid; place-items: center; padding: var(--gutter);
+  background: rgba(21,20,20,0.7); backdrop-filter: blur(14px);
+  opacity: 0; visibility: hidden; transition: opacity 0.35s, visibility 0.35s;
+}
+.menu-aberto .menu { opacity: 1; visibility: visible; }
+.menu__caixa {
+  width: min(460px, 100%); background: var(--creme); color: var(--tinta);
+  border-radius: 32px; padding: 26px; display: grid; gap: 12px;
+  transform: translateY(20px) scale(0.97); transition: transform 0.45s var(--curva);
+}
+.menu-aberto .menu__caixa { transform: none; }
+.menu__topo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.menu__fechar { width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--branco); cursor: pointer; font: 400 26px/1 var(--f-texto); color: var(--tinta); }
+.menu .pilula { width: 100%; justify-content: space-between; min-height: 68px; font-size: 16px; }
+.menu__rodape { margin-top: 8px; font-size: 13px; color: var(--nude-texto); text-align: center; }
+
+/* ---------- responsivo ---------- */
+@media (max-width: 1100px) {
+  .capa { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto auto auto; padding-top: 96px; }
+  .capa__marca { grid-column: 1 / -1; grid-row: 1; margin-top: 4vh; }
+  .capa__titulo { grid-column: 1; grid-row: 2; align-self: end; }
+  .capa__texto { grid-column: 2; grid-row: 2; align-self: end; }
+  .capa__base { grid-row: 3; }
+  .mono { font-size: clamp(110px, 21vw, 230px); }
+}
+@media (max-width: 860px) {
+  .capa__nav { display: none; }
+  .cuidados__grade { grid-template-columns: 1fr; max-width: 560px; }
+  .servicos__intro, .sobre, .duvidas, .agendar { grid-template-columns: 1fr; }
+  .servicos__intro p { justify-self: start; }
+  .servicos__grade { grid-template-columns: 1fr; }
+  .depo--5, .depo--6, .depo--7 { grid-column: 1 / -1; }
+  .paredao__topo { grid-template-columns: 1fr auto; }
+  .paredao .selo-pill { display: none; }
+  .garantia__topo { grid-template-columns: 1fr; justify-items: start; }
+  .garantia__topo .selo-pill, .garantia__topo .acoes { justify-self: start; }
+  .duvidas__cab { position: static; }
+  .sobre__foto { max-width: 440px; }
+  .painel__grade { grid-template-columns: 1fr 1fr; grid-template-rows: 1.25fr 1fr 1fr; }
+  .foto--a { grid-row: 1; grid-column: 1 / 3; }
+  .foto--d { grid-column: 1 / 3; }
+}
+@media (max-width: 600px) {
+  .capa { grid-template-columns: minmax(0, 1fr); padding-top: 92px; row-gap: 22px; }
+  .capa__marca { margin-top: 2vh; padding-bottom: 46px; }
+  .capa__marca .luz { bottom: 28px; --luz-w: 120vw; --luz-h: 40vh; }
+  .mono { font-size: 25vw; }
+  .capa__titulo, .capa__texto { grid-column: 1; }
+  .capa__titulo { grid-row: 2; }
+  .capa__texto { grid-row: 3; justify-self: start; text-align: left; font-size: 15px; }
+  .capa__base { grid-row: 4; }
+  .capa h1 { font-size: 27px; }
+  .capa .acoes { width: 100%; }
+  .capa .pilula--clara { flex: 1; justify-content: space-between; }
+  .pilula { min-height: 56px; font-size: 14px; }
+  .pilula__icone { width: 40px; height: 40px; }
+  .painel { height: 76vh; padding: 12px; border-radius: 24px; }
+  .painel__grade { gap: 8px; }
+  .foto figcaption { padding: 30px 12px 12px; }
+  .acende { font-size: 29px; }
+  .trilho { --H: 46vh; --W: 136px; gap: 8px; }
+  .paredao__topo { grid-template-columns: 1fr; }
+  .link-seta { justify-self: start; }
+  .paredao__palco { padding-top: 84px; gap: 22px; }
+  .paredao__desc { font-size: 14px; }
+  .depo { padding: 22px 20px 24px; }
+  .numeros { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .numeros b { font-size: 26px; }
+  .numeros li > span { font-size: 12.5px; }
+  .servico__base { flex-wrap: wrap; }
+  .aviso { font-size: 11px; letter-spacing: 0.08em; }
+}
+
+/* ---------- movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .capa__marca .luz { animation: none; }
+  .faixa { transform: translateX(-12%); }
+}
+.fx-reduzido .painel { transform: none; }
+.fx-reduzido .acende-cena .fx-palco, .fx-reduzido .painel-cena .fx-palco { padding: 80px 0; }
+.fx-reduzido .paredao .fx-palco { padding: 40px 0 80px; }
+.fx-reduzido .trilho { height: auto; flex-wrap: wrap; gap: 12px; padding-right: var(--gutter); }
+.fx-reduzido .unha { height: calc(var(--W) * 1.33); }
+.fx-reduzido .unha--inicio { margin-left: 0; }
+.fx-reduzido .paredao .luz { display: none; }
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <a class="mini" href="#inicio" aria-label="Nails2You Moema, início">N<i>2</i>Y</a>
+  <button class="topo__menu" type="button" data-menu-abrir aria-expanded="false" aria-controls="menu">
+    <span></span><span></span><span class="sr-only">Abrir menu</span>
+  </button>
+</header>
+
+<p class="aviso" data-exemplo>Versão de teste · dados fictícios</p>
+
+<main>
+
+<!-- 1. CAPA -->
+<section class="capa grao" id="inicio" data-tom="escuro">
+  <nav class="capa__nav" aria-label="Atalhos">
+    <a href="#paredao">Unhas em gel</a><i></i><a href="#servicos">FASTGEL</a><i></i><a href="#paredao">Nail art</a><i></i><a href="#sobre">Moema</a>
+  </nav>
+
+  <div class="capa__titulo">
+    <h1 data-fx="subir">Beleza que leva a sua <span class="serif">assinatura.</span></h1>
+  </div>
+
+  <div class="capa__marca" data-fx-mouse="10">
+    <div class="luz" aria-hidden="true"><i class="luz__cone"></i><i class="luz__linha"></i><i class="luz__chao"></i></div>
+    <p class="mono" role="img" aria-label="Nails2You">
+      <span class="mono__letra">N</span><span class="mono__dois"><span>2</span></span><span class="mono__letra">Y</span>
+    </p>
+  </div>
+
+  <p class="capa__texto" data-fx="surgir" data-fx-atraso="500">Unhas em gel, alongamento FASTGEL e um tempo só seu, em Moema. Do formato ao brilho final, a gente cuida de cada detalhe.</p>
+
+  <div class="capa__base">
+    <div class="acoes">
+      <a class="pilula pilula--clara" href="#agendar">Agendar <span class="pilula__icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+      <a class="pilula pilula--escura" href="https://wa.me/5511995533330" target="_blank" rel="noopener">WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.6c0 3.4 3 6.4 6.4 6.4l1.1-1.6-2.1-1-1 .9a5 5 0 0 1-2.7-2.7l.9-1-1-2.1z"/></svg></a>
+    </div>
+    <div class="clientes" data-exemplo>
+      <div><b><span data-fx="contar" data-fx-fim="2400" data-fx-prefixo="+">+2.400</span> clientes</b><small>atendidas na unidade (exemplo)</small></div>
+      <div class="avatares" aria-hidden="true">
+        <span class="avatar" style="--c:#8B1E35">MC</span><span class="avatar" style="--c:#9A4F5B">JP</span><span class="avatar" style="--c:#6F5B52">BN</span><span class="avatar" style="--c:#5E2A3C">RA</span><span class="avatar" style="--c:#A0604F">CT</span><span class="avatar" style="--c:#3B2A2D">LM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PAINEL: POR DENTRO DA UNIDADE -->
+<section class="painel-cena" data-fx-fixa data-fx-altura="2.3" data-tom="escuro" aria-labelledby="painel-t">
+  <div class="fx-palco">
+    <div class="painel">
+      <div class="painel__topo">
+        <h2 id="painel-t">Por dentro da unidade</h2>
+        <p>Alameda dos Tupiniquins, 1089 · Moema, São Paulo</p>
+      </div>
+      <div class="painel__grade">
+        <figure class="foto foto--a"><img src="img/salao-esmaltes.webp" alt="Parede com prateleiras douradas cheias de esmaltes coloridos"><figcaption><span class="etiqueta">Cores</span><b>Centenas de tons para escolher</b></figcaption></figure>
+        <figure class="foto foto--b"><img src="img/salao-atendimento.webp" alt="Manicure finalizando as unhas de uma cliente na cabine de LED"><figcaption><span class="etiqueta">Atendimento</span><b>Sem pressa, com hora marcada</b></figcaption></figure>
+        <figure class="foto foto--c"><img src="img/salao-cadeiras.webp" alt="Ambiente com cadeiras pretas e espelhos redondos"><figcaption><span class="etiqueta">Espaço</span><b>Um lugar para respirar</b></figcaption></figure>
+        <figure class="foto foto--d"><img src="img/cor-vermelho-mao.webp" alt="Mão com unhas vermelhas brilhantes segurando uma pequena flor"><figcaption><span class="etiqueta">Acabamento</span><b>O brilho que dura semanas</b></figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. TEXTO QUE ACENDE -->
+<section class="acende-cena" data-fx-fixa data-fx-altura="2.4" aria-label="A promessa da Nails2You Moema">
+  <div class="fx-palco">
+    <p class="acende" data-acende>Em <b>uma tarde</b>, você sai daqui com unhas que <b>duram até três semanas</b>, sem lascar, sem perder o brilho e sem precisar pensar nelas de novo.</p>
+  </div>
+</section>
+
+<!-- 4. TRÊS CUIDADOS -->
+<section class="secao cuidados" id="cuidados" aria-labelledby="cuidados-t">
+  <div class="cabeca">
+    <span class="selo-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z"/><path d="m9 12 2 2 4-4"/></svg>O que não muda nunca</span>
+    <h2 id="cuidados-t" data-fx="subir">Três coisas que a gente <span class="serif">não negocia</span></h2>
+  </div>
+  <div class="cuidados__grade">
+    <article class="cartao" data-fx="subir">
+      <figure class="foto"><img src="img/salao-cadeiras.webp" alt="Cadeiras do salão prontas para o próximo atendimento" loading="lazy"></figure>
+      <h3>Hora marcada de verdade</h3>
+      <p>O seu horário é seu. Você chega, senta e começa. Sem fila, sem encaixe e sem ficar esperando no sofá.</p>
+    </article>
+    <article class="cartao" data-fx="subir" data-fx-atraso="120">
+      <figure class="foto"><img src="img/salao-ferramentas.webp" alt="Alicate, lixa e espátula sobre uma toalha limpa" loading="lazy"></figure>
+      <h3>Material esterilizado e lacrado</h3>
+      <p>Alicates e espátulas saem da autoclave em embalagem lacrada, aberta na sua frente. Lixa é individual e vai embora com você.</p>
+    </article>
+    <article class="cartao" data-fx="subir" data-fx-atraso="240">
+      <figure class="foto"><img src="img/salao-cuidado.webp" alt="Mãos recebendo massagem durante o cuidado" loading="lazy"></figure>
+      <h3>Indicação para as suas unhas</h3>
+      <p>Antes de qualquer gel, a equipe olha a sua unha natural e indica o que faz sentido para ela, e não o que está na moda.</p>
+    </article>
+  </div>
+  <div class="acoes">
+    <a class="pilula pilula--preta" href="#agendar">Agendar <span class="pilula__icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+    <a class="pilula pilula--branca" href="https://wa.me/5511995533330" target="_blank" rel="noopener">WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.6c0 3.4 3 6.4 6.4 6.4l1.1-1.6-2.1-1-1 .9a5 5 0 0 1-2.7-2.7l.9-1-1-2.1z"/></svg></a>
+  </div>
+</section>
+
+<!-- 5. PAREDÃO (PICO) -->
+<section class="paredao" id="paredao" data-fx-fixa data-fx-altura="5" data-fx-etapas="3" data-tom="escuro" aria-labelledby="paredao-t">
+  <div class="fx-palco">
+    <div class="paredao__palco">
+      <div class="luz" aria-hidden="true"><i class="luz__cone"></i><i class="luz__linha"></i><i class="luz__chao"></i></div>
+      <div class="paredao__topo">
+        <div class="paredao__etapas">
+          <h2 id="paredao-t" class="sr-only">Nosso trabalho em três etapas: forma, cor e arte</h2>
+          <p class="paredao__etapa fx-etapa"><span class="paredao__num">01 / 03</span><span class="paredao__nome">Forma</span><span class="paredao__desc">Amendoada, quadrada ou stiletto: o formato muda a mão inteira.</span></p>
+          <p class="paredao__etapa fx-etapa"><span class="paredao__num">02 / 03</span><span class="paredao__nome">Cor</span><span class="paredao__desc">Do nude que some na pele ao vinho que chega antes de você.</span></p>
+          <p class="paredao__etapa fx-etapa"><span class="paredao__num">03 / 03</span><span class="paredao__nome">Arte</span><span class="paredao__desc">Detalhes feitos à mão, do floral delicado ao relevo com pérolas.</span></p>
+        </div>
+        <span class="selo-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c.8 4.6 2.6 6.4 7 7-4.4.7-6.2 2.5-7 7-.8-4.5-2.6-6.3-7-7 4.4-.6 6.2-2.4 7-7z"/></svg>Cores novas toda semana</span>
+        <a class="link-seta" href="https://www.instagram.com/nails2you.moema/" target="_blank" rel="noopener">Ver no Instagram <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </div>
+
+      <div class="trilho" data-fx="trilho">
+        <figure class="unha" style="--h:.64"><img src="img/forma-amendoada.webp" alt="Unhas amendoadas douradas"><span class="unha__tag">Forma</span><figcaption>Amendoada</figcaption></figure>
+        <figure class="unha" style="--h:.72"><img src="img/forma-oval.webp" alt="Unhas ovais em rosa claro"><span class="unha__tag">Forma</span><figcaption>Oval</figcaption></figure>
+        <figure class="unha" style="--h:.8"><img src="img/forma-quadrada.webp" alt="Unhas quadradas com degradê azul"><span class="unha__tag">Forma</span><figcaption>Quadrada</figcaption></figure>
+        <figure class="unha" style="--h:.88"><img src="img/forma-bailarina.webp" alt="Unhas longas em formato bailarina"><span class="unha__tag">Forma</span><figcaption>Bailarina</figcaption></figure>
+        <figure class="unha" style="--h:.95"><img src="img/forma-stiletto.webp" alt="Unhas stiletto metalizadas com pedrarias"><span class="unha__tag">Forma</span><figcaption>Stiletto</figcaption></figure>
+        <figure class="unha" style="--h:1"><img src="img/forma-curta.webp" alt="Unhas curtas e naturais em tom nude"><span class="unha__tag">Forma</span><figcaption>Curta natural</figcaption></figure>
+
+        <figure class="unha unha--inicio" style="--h:.64"><img src="img/cor-vinho.webp" alt="Unhas vinho com acabamento brilhante"><span class="unha__tag">Cor</span><figcaption>Vinho<span class="unha__real">feito na unidade</span></figcaption></figure>
+        <figure class="unha" style="--h:.72"><img src="img/cor-vermelho.webp" alt="Mãos com unhas vermelhas clássicas"><span class="unha__tag">Cor</span><figcaption>Vermelho clássico</figcaption></figure>
+        <figure class="unha" style="--h:.8"><img src="img/cor-nude.webp" alt="Unhas em nude rosado sobre tecido branco"><span class="unha__tag">Cor</span><figcaption>Nude rosado</figcaption></figure>
+        <figure class="unha" style="--h:.88"><img src="img/cor-cafe.webp" alt="Unhas cor de café com leite"><span class="unha__tag">Cor</span><figcaption>Café com leite</figcaption></figure>
+        <figure class="unha" style="--h:.95"><img src="img/cor-verde.webp" alt="Unhas verde-musgo sobre tecido vermelho"><span class="unha__tag">Cor</span><figcaption>Verde musgo</figcaption></figure>
+        <figure class="unha" style="--h:1"><img src="img/cor-perolado.webp" alt="Unhas rosadas de efeito perolado"><span class="unha__tag">Cor</span><figcaption>Perolado<span class="unha__real">feito na unidade</span></figcaption></figure>
+
+        <figure class="unha unha--inicio" style="--h:.64"><img src="img/arte-floral.webp" alt="Nail art com flores azuis sobre base clara"><span class="unha__tag">Arte</span><figcaption>Floral azul<span class="unha__real">feito na unidade</span></figcaption></figure>
+        <figure class="unha" style="--h:.72"><img src="img/arte-perolas.webp" alt="Unhas rosadas com pérolas e relevo dourado"><span class="unha__tag">Arte</span><figcaption>Pérolas e relevo</figcaption></figure>
+        <figure class="unha" style="--h:.8"><img src="img/arte-folhagem.webp" alt="Unhas com folhas pintadas e glitter"><span class="unha__tag">Arte</span><figcaption>Folhas e glitter</figcaption></figure>
+        <figure class="unha" style="--h:.88"><img src="img/arte-aquarela.webp" alt="Unhas stiletto com aquarela vermelha e branca"><span class="unha__tag">Arte</span><figcaption>Aquarela</figcaption></figure>
+        <figure class="unha" style="--h:.95"><img src="img/arte-marinho.webp" alt="Unhas em marinho, dourado e branco"><span class="unha__tag">Arte</span><figcaption>Marinho e ouro</figcaption></figure>
+        <figure class="unha" style="--h:1"><img src="img/arte-francesinha.webp" alt="Francesinha clássica segurando uma flor"><span class="unha__tag">Arte</span><figcaption>Francesinha</figcaption></figure>
+        <figure class="unha" style="--h:1"><img src="img/arte-tartaruga.webp" alt="Unhas pretas e efeito tartaruga"><span class="unha__tag">Arte</span><figcaption>Tartaruga</figcaption></figure>
+        <span class="trilho__fim" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. SERVIÇOS -->
+<section class="secao servicos" id="servicos" aria-labelledby="servicos-t">
+  <div class="servicos__intro">
+    <div>
+      <p class="sobrelinha">O cardápio</p>
+      <h2 id="servicos-t" class="h2" data-fx="subir" style="margin-top:16px">Escolha o seu <span class="serif">cuidado</span></h2>
+    </div>
+    <p data-fx="surgir">Quatro serviços, feitos com tempo. Os valores abaixo são de exemplo: na conversa pelo WhatsApp a equipe confirma o preço e a duração para as suas unhas.</p>
+  </div>
+  <div class="servicos__grade">
+    <article class="servico" data-fx="subir">
+      <div class="servico__topo"><span class="servico__num">01</span><span class="etiqueta">Comprimento &amp; formato</span></div>
+      <h3>Alongamento FASTGEL</h3>
+      <p>Para quem deseja transformar o comprimento e explorar um novo formato de unha, com acabamento em gel.</p>
+      <div class="servico__base">
+        <span class="preco" data-exemplo>a partir de <b>R$ 220</b></span><span class="tempo" data-exemplo>cerca de 2h30</span>
+        <a class="seta-circulo" href="#agendar" data-servico="Alongamento FASTGEL" aria-label="Agendar alongamento FASTGEL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </div>
+    </article>
+    <article class="servico" data-fx="subir" data-fx-atraso="120">
+      <div class="servico__topo"><span class="servico__num">02</span><span class="etiqueta">Cuidado &amp; acabamento</span></div>
+      <h3>Blindagem</h3>
+      <p>Uma opção para cuidar das unhas naturais. Consulte a equipe para entender a indicação para as suas unhas.</p>
+      <div class="servico__base">
+        <span class="preco" data-exemplo>a partir de <b>R$ 120</b></span><span class="tempo" data-exemplo>cerca de 1h15</span>
+        <a class="seta-circulo" href="#agendar" data-servico="Blindagem" aria-label="Agendar blindagem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </div>
+    </article>
+    <article class="servico" data-fx="subir">
+      <div class="servico__topo"><span class="servico__num">03</span><span class="etiqueta">Estrutura &amp; brilho</span></div>
+      <h3>Banho de gel</h3>
+      <p>Para quem quer valorizar o comprimento natural com uma cobertura em gel e um acabamento bem definido.</p>
+      <div class="servico__base">
+        <span class="preco" data-exemplo>a partir de <b>R$ 150</b></span><span class="tempo" data-exemplo>cerca de 1h30</span>
+        <a class="seta-circulo" href="#agendar" data-servico="Banho de gel" aria-label="Agendar banho de gel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </div>
+    </article>
+    <article class="servico" data-fx="subir" data-fx-atraso="120">
+      <div class="servico__topo"><span class="servico__num">04</span><span class="etiqueta">O seu ritual</span></div>
+      <h3>Manicure &amp; pedicure</h3>
+      <p>Cuidados para mãos e pés, da escolha da cor ao toque final. Uma pausa que cabe na sua rotina.</p>
+      <div class="servico__base">
+        <span class="preco" data-exemplo>a partir de <b>R$ 85</b></span><span class="tempo" data-exemplo>cerca de 1h30</span>
+        <a class="seta-circulo" href="#agendar" data-servico="Manicure e pedicure" aria-label="Agendar manicure e pedicure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 7. DEPOIMENTOS -->
+<section class="secao depos" id="depoimentos" aria-labelledby="depos-t">
+  <div class="cabeca">
+    <span class="selo-pill" data-exemplo>★ 4,9 de média · depoimentos de exemplo</span>
+    <h2 id="depos-t" data-fx="subir">Quem senta na nossa cadeira <span class="serif">volta</span></h2>
+  </div>
+  <div class="depos__grade">
+    <article class="depo depo--5" data-exemplo data-fx="subir" style="--selo:#8B1E35">
+      <span class="depo__selo" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4.5l3.3 7 7.4.8-5.6 5 1.6 7.4L16 21l-6.7 3.7 1.6-7.4-5.6-5 7.4-.8z"/></svg></span>
+      <header><span class="avatar" style="--c:#8B1E35">MC</span><div><b>Marina Costa</b><span>@marinacosta.mk</span></div></header>
+      <p>Fiz o alongamento FASTGEL antes do meu casamento e durou a lua de mel inteira. Ninguém acreditava que não era a minha unha.</p>
+      <span class="tag-exemplo">exemplo</span>
+    </article>
+    <article class="depo depo--7" data-exemplo data-fx="subir" data-fx-atraso="100" style="--selo:#C98F7E">
+      <span class="depo__selo" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4.5l3.3 7 7.4.8-5.6 5 1.6 7.4L16 21l-6.7 3.7 1.6-7.4-5.6-5 7.4-.8z"/></svg></span>
+      <header><span class="avatar" style="--c:#9A4F5B">JP</span><div><b>Juliana Prado</b><span>@jujuprado</span></div></header>
+      <p>Minha unha sempre foi fina e quebradiça. Me indicaram a blindagem e, pela primeira vez em anos, consegui deixar crescer sem lascar no meio da semana. O atendimento é calmo, ninguém fica olhando o relógio.</p>
+      <span class="tag-exemplo">exemplo</span>
+    </article>
+    <article class="depo depo--7" data-exemplo data-fx="subir" style="--selo:#5E2A3C">
+      <span class="depo__selo" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4.5l3.3 7 7.4.8-5.6 5 1.6 7.4L16 21l-6.7 3.7 1.6-7.4-5.6-5 7.4-.8z"/></svg></span>
+      <header><span class="avatar" style="--c:#5E2A3C">RA</span><div><b>Renata Almeida</b><span>@re.almeida</span></div></header>
+      <p>Mandei uma foto do Pinterest achando que era impossível. Elas fizeram igualzinho, só que com o formato que combinava mais com a minha mão. Já saí de lá com a próxima marcada.</p>
+      <span class="tag-exemplo">exemplo</span>
+    </article>
+    <article class="depo depo--5" data-exemplo data-fx="subir" data-fx-atraso="100" style="--selo:#C9A24E">
+      <span class="depo__selo" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4.5l3.3 7 7.4.8-5.6 5 1.6 7.4L16 21l-6.7 3.7 1.6-7.4-5.6-5 7.4-.8z"/></svg></span>
+      <header><span class="avatar" style="--c:#6F5B52">BN</span><div><b>Bea Nogueira</b><span>@bea.nogueira</span></div></header>
+      <p>O horário é o horário. Saio do trabalho, sento na cadeira e uma hora depois estou pronta. Para quem tem a agenda que eu tenho, isso vale ouro.</p>
+      <span class="tag-exemplo">exemplo</span>
+    </article>
+    <article class="depo depo--6" data-exemplo data-fx="subir" style="--selo:#B76E79">
+      <span class="depo__selo" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4.5l3.3 7 7.4.8-5.6 5 1.6 7.4L16 21l-6.7 3.7 1.6-7.4-5.6-5 7.4-.8z"/></svg></span>
+      <header><span class="avatar" style="--c:#A0604F">CT</span><div><b>Camila Torres</b><span>@camilatorres</span></div></header>
+      <p>Ambiente lindo, cheiroso e o material aberto na minha frente. Parece detalhe, mas foi isso que me fez trocar de salão.</p>
+      <span class="tag-exemplo">exemplo</span>
+    </article>
+    <article class="depo depo--6" data-exemplo data-fx="subir" data-fx-atraso="100" style="--selo:#3B2A2D">
+      <span class="depo__selo" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4.5l3.3 7 7.4.8-5.6 5 1.6 7.4L16 21l-6.7 3.7 1.6-7.4-5.6-5 7.4-.8z"/></svg></span>
+      <header><span class="avatar" style="--c:#3B2A2D">LM</span><div><b>Luiza Martins</b><span>@luizamartins_</span></div></header>
+      <p>Faço banho de gel com elas há seis meses. A minha unha natural nunca esteve tão forte, e a manutenção é rapidinha.</p>
+      <span class="tag-exemplo">exemplo</span>
+    </article>
+  </div>
+</section>
+
+<!-- 8. GARANTIA + FAIXAS -->
+<section class="garantia" aria-labelledby="garantia-t">
+  <div class="garantia__topo">
+    <p data-fx="surgir">Se a sua unha lascar em até 7 dias, a gente refaz sem custo. Sem letra miúda e sem precisar explicar o que aconteceu.</p>
+    <span class="selo-pill" data-exemplo><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z"/><path d="m9 12 2 2 4-4"/></svg><span id="garantia-t">Retoque grátis em 7 dias</span></span>
+    <div class="acoes">
+      <a class="pilula pilula--preta" href="#agendar">Agendar <span class="pilula__icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+      <a class="pilula pilula--branca" href="https://wa.me/5511995533330" target="_blank" rel="noopener">WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.6c0 3.4 3 6.4 6.4 6.4l1.1-1.6-2.1-1-1 .9a5 5 0 0 1-2.7-2.7l.9-1-1-2.1z"/></svg></a>
+    </div>
+  </div>
+
+  <p class="sr-only">Não é só mais uma unha. É a sua assinatura. Seja Nails2You.</p>
+  <div class="faixas" aria-hidden="true">
+    <div class="faixa" style="--dir:-1">
+      <span>Não é só mais uma unha</span><svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M33 9c4-1.4 10-1.2 14 .2l1.2 21.6c-5.4 1.4-11 1.4-16.4.2z"/><path d="M31 31.5C21 34 15 42 15.5 52.5 16 64 26 72 40.5 71.6 55 71.3 65 63.5 64.6 52 64.3 42 58 34.6 48.6 31.6"/><path d="M24.5 49.5c.6-5.6 3.6-9.5 8.4-11.2"/><path d="M62 13l5-5.5M66.5 23.5H74M57.5 7.5 58 2"/></svg>
+      <span>Não é só mais uma unha</span><svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M33 9c4-1.4 10-1.2 14 .2l1.2 21.6c-5.4 1.4-11 1.4-16.4.2z"/><path d="M31 31.5C21 34 15 42 15.5 52.5 16 64 26 72 40.5 71.6 55 71.3 65 63.5 64.6 52 64.3 42 58 34.6 48.6 31.6"/><path d="M24.5 49.5c.6-5.6 3.6-9.5 8.4-11.2"/><path d="M62 13l5-5.5M66.5 23.5H74M57.5 7.5 58 2"/></svg>
+      <span>Não é só mais uma unha</span><svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M33 9c4-1.4 10-1.2 14 .2l1.2 21.6c-5.4 1.4-11 1.4-16.4.2z"/><path d="M31 31.5C21 34 15 42 15.5 52.5 16 64 26 72 40.5 71.6 55 71.3 65 63.5 64.6 52 64.3 42 58 34.6 48.6 31.6"/><path d="M24.5 49.5c.6-5.6 3.6-9.5 8.4-11.2"/><path d="M62 13l5-5.5M66.5 23.5H74M57.5 7.5 58 2"/></svg>
+      <span>Não é só mais uma unha</span><svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M33 9c4-1.4 10-1.2 14 .2l1.2 21.6c-5.4 1.4-11 1.4-16.4.2z"/><path d="M31 31.5C21 34 15 42 15.5 52.5 16 64 26 72 40.5 71.6 55 71.3 65 63.5 64.6 52 64.3 42 58 34.6 48.6 31.6"/><path d="M24.5 49.5c.6-5.6 3.6-9.5 8.4-11.2"/><path d="M62 13l5-5.5M66.5 23.5H74M57.5 7.5 58 2"/></svg>
+    </div>
+    <div class="faixa" style="--dir:1">
+      <span>É a sua assinatura</span><svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M38 9c3 15 8.5 22.5 25 26.5-16 3.6-21.5 10.5-25 28-3.4-17.3-9.2-24.3-25.6-27.6C28.6 32 34.6 24 38 9z"/><path d="M29.5 37.5l6 6 11.5-13"/><path d="M64 9l3.5 6.5M71 21.5h6.5M60 4.5 59.5 1"/></svg>
+      <span>É a sua assinatura</span><svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M38 9c3 15 8.5 22.5 25 26.5-16 3.6-21.5 10.5-25 28-3.4-17.3-9.2-24.3-25.6-27.6C28.6 32 34.6 24 38 9z"/><path d="M29.5 37.5l6 6 11.5-13"/><path d="M64 9l3.5 6.5M71 21.5h6.5M60 4.5 59.5 1"/></svg>
+      <span>É a sua assinatura</span><svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M38 9c3 15 8.5 22.5 25 26.5-16 3.6-21.5 10.5-25 28-3.4-17.3-9.2-24.3-25.6-27.6C28.6 32 34.6 24 38 9z"/><path d="M29.5 37.5l6 6 11.5-13"/><path d="M64 9l3.5 6.5M71 21.5h6.5M60 4.5 59.5 1"/></svg>
+      <span>É a sua assinatura</span><svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M38 9c3 15 8.5 22.5 25 26.5-16 3.6-21.5 10.5-25 28-3.4-17.3-9.2-24.3-25.6-27.6C28.6 32 34.6 24 38 9z"/><path d="M29.5 37.5l6 6 11.5-13"/><path d="M64 9l3.5 6.5M71 21.5h6.5M60 4.5 59.5 1"/></svg>
+    </div>
+    <div class="faixa" style="--dir:-1">
+      <span>Seja Nails2You</span><svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M40 68C22 56.5 10.5 45.5 10.8 31.2 11 22 17.6 15.4 25.6 15.6c6 .1 10.8 3.2 14.6 9 3.8-5.8 8.8-8.9 14.8-8.8 8 .2 14.4 7 14.2 16C69 46 57.8 56.6 40 68z"/><path d="M21.5 30.5c.8-4.2 3.8-7.2 8-7.6"/><path d="M66 8.5l4-5.5M72.5 17h7"/></svg>
+      <span>Seja Nails2You</span><svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M40 68C22 56.5 10.5 45.5 10.8 31.2 11 22 17.6 15.4 25.6 15.6c6 .1 10.8 3.2 14.6 9 3.8-5.8 8.8-8.9 14.8-8.8 8 .2 14.4 7 14.2 16C69 46 57.8 56.6 40 68z"/><path d="M21.5 30.5c.8-4.2 3.8-7.2 8-7.6"/><path d="M66 8.5l4-5.5M72.5 17h7"/></svg>
+      <span>Seja Nails2You</span><svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M40 68C22 56.5 10.5 45.5 10.8 31.2 11 22 17.6 15.4 25.6 15.6c6 .1 10.8 3.2 14.6 9 3.8-5.8 8.8-8.9 14.8-8.8 8 .2 14.4 7 14.2 16C69 46 57.8 56.6 40 68z"/><path d="M21.5 30.5c.8-4.2 3.8-7.2 8-7.6"/><path d="M66 8.5l4-5.5M72.5 17h7"/></svg>
+      <span>Seja Nails2You</span><svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M40 68C22 56.5 10.5 45.5 10.8 31.2 11 22 17.6 15.4 25.6 15.6c6 .1 10.8 3.2 14.6 9 3.8-5.8 8.8-8.9 14.8-8.8 8 .2 14.4 7 14.2 16C69 46 57.8 56.6 40 68z"/><path d="M21.5 30.5c.8-4.2 3.8-7.2 8-7.6"/><path d="M66 8.5l4-5.5M72.5 17h7"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- 9. SOBRE -->
+<section class="secao" id="sobre" aria-labelledby="sobre-t">
+  <div class="sobre">
+    <figure class="sobre__foto" data-fx="esquerda"><img src="img/salao-atendimento.webp" alt="Mãos da manicure trabalhando com cuidado nas unhas de uma cliente" loading="lazy"></figure>
+    <div class="sobre__texto" data-exemplo>
+      <p class="sobrelinha">Quem cuida de você</p>
+      <h2 id="sobre-t" class="h2" data-fx="palavras">Carol Menezes</h2>
+      <p class="sobre__cargo">À frente da Nails2You Moema desde 2018</p>
+      <p>A Carol começou fazendo as unhas das amigas na sala de casa e nunca mais parou. Hoje cuida de uma equipe que trabalha do mesmo jeito: olhando primeiro para a unha natural, explicando cada passo e só terminando quando você olha para a mão e sorri.</p>
+      <ul class="numeros">
+        <li><b><span data-fx="contar" data-fx-fim="8">8</span> anos</b><span>de unidade em Moema</span></li>
+        <li><b><span data-fx="contar" data-fx-fim="12">12</span> mil</b><span>seguidoras no Instagram</span></li>
+        <li><b><span data-fx="contar" data-fx-fim="4.9" data-fx-decimais="1">4,9</span> ★</b><span>de média no Google</span></li>
+      </ul>
+      <p class="nota">Pessoa, história e números fictícios, só para esta versão de teste.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. CHAMADA FINAL -->
+<section class="chamada grao" data-tom="escuro" aria-labelledby="chamada-t">
+  <div class="luz" aria-hidden="true"><i class="luz__cone"></i><i class="luz__linha"></i><i class="luz__chao"></i></div>
+  <h2 id="chamada-t" data-fx="subir">Seu próximo momento <span class="serif">começa agora.</span></h2>
+  <div class="acoes" data-fx="surgir" data-fx-atraso="300">
+    <a class="pilula pilula--clara" href="#agendar">Quero agendar <span class="pilula__icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+    <a class="pilula pilula--escura" href="#duvidas">Tirar dúvidas</a>
+  </div>
+</section>
+
+<!-- 11. DÚVIDAS -->
+<section class="secao" id="duvidas" aria-labelledby="duvidas-t">
+  <div class="duvidas">
+    <div class="duvidas__cab">
+      <p class="sobrelinha">Antes de agendar</p>
+      <h2 id="duvidas-t" class="h2">Seus detalhes, <span class="serif">bem esclarecidos</span></h2>
+      <p style="color:#5B4A4C">Não achou a sua pergunta? Chame no <a href="https://wa.me/5511995533330" target="_blank" rel="noopener">WhatsApp (11) 99553-3330</a>.</p>
+    </div>
+    <div class="lista-duvidas">
+      <details><summary>Não sei qual serviço escolher. Vocês me ajudam?</summary><p>Sim. Conte à equipe como estão suas unhas e qual resultado você procura. A indicação do serviço é combinada diretamente com as profissionais.</p></details>
+      <details><summary>Quais são os valores e a duração do atendimento?</summary><p>Consulte a equipe pelo WhatsApp. O valor e o tempo dependem do serviço, do estado das unhas e do acabamento desejado.</p></details>
+      <details><summary>Posso enviar uma foto de inspiração?</summary><p>Pode. Envie sua referência na conversa de agendamento para consultar a possibilidade de fazer o formato, a cor ou a decoração que você deseja.</p></details>
+      <details><summary>Como funciona a manutenção?</summary><p>A necessidade e o intervalo da manutenção variam conforme o serviço e as suas unhas. Peça orientações à equipe no atendimento.</p></details>
+      <details data-exemplo><summary>Qual é o horário de funcionamento?</summary><p>De segunda a sábado, das 9h às 20h. <span class="tag-exemplo">exemplo</span></p></details>
+      <details data-exemplo><summary>Quais formas de pagamento vocês aceitam?</summary><p>Pix, cartão de débito e cartão de crédito em até 3 vezes sem juros. <span class="tag-exemplo">exemplo</span></p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 12. AGENDAR -->
+<section class="secao" id="agendar" aria-labelledby="agendar-t" style="padding-top:0">
+  <div class="agendar">
+    <div class="agendar__texto">
+      <p class="sobrelinha">Seu momento Nails2You</p>
+      <h2 id="agendar-t" class="h2" data-fx="subir">Garanta o seu <span class="serif">horário</span></h2>
+      <p>Comece pelo serviço. Os próximos detalhes a gente combina na conversa, e o horário é confirmado pela equipe conforme a disponibilidade.</p>
+    </div>
+    <form class="form" novalidate>
+      <h3>Agendar pelo WhatsApp</h3>
+      <div class="campo">
+        <label for="servico">Qual cuidado você procura?</label>
+        <select id="servico" name="servico">
+          <option value="">Quero ajuda para escolher</option>
+          <option>Alongamento FASTGEL</option>
+          <option>Blindagem</option>
+          <option>Banho de gel</option>
+          <option>Manicure e pedicure</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="nome">Seu nome</label>
+        <input id="nome" name="nome" type="text" autocomplete="given-name" placeholder="Como podemos te chamar?">
+      </div>
+      <div class="campo">
+        <label for="periodo">Melhor período</label>
+        <select id="periodo" name="periodo">
+          <option value="">Tanto faz</option>
+          <option>Manhã</option>
+          <option>Tarde</option>
+          <option>Noite</option>
+        </select>
+      </div>
+      <button class="pilula pilula--vinho" type="submit">Conversar e agendar <span class="pilula__icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span></button>
+      <small>Abre o WhatsApp da unidade com a mensagem pronta. Prefere ligar? <a href="tel:+5511995533330">(11) 99553-3330</a></small>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape" data-tom="escuro">
+  <a class="rodape__marca" href="#inicio" aria-label="Nails2You Moema, voltar ao início">NAILS<i>2</i>YOU</a>
+  <div class="rodape__linha">
+    <span>Alameda dos Tupiniquins, 1089 · Moema · São Paulo, SP</span>
+    <a href="https://www.instagram.com/nails2you.moema/" target="_blank" rel="noopener">Instagram @nails2you.moema ↗</a>
+    <a href="https://wa.me/5511995533330" target="_blank" rel="noopener">WhatsApp (11) 99553-3330 ↗</a>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=Nails2You+Alameda+dos+Tupiniquins+1089+Sao+Paulo" target="_blank" rel="noopener">Traçar rota ↗</a>
+  </div>
+  <p class="rodape__nota" data-exemplo>Versão de teste. Depoimentos, preços, tempos, horário, formas de pagamento, a política de retoque, os números e a responsável pela unidade são fictícios. As fotos marcadas como "feito na unidade" vêm do perfil @nails2you.moema; as outras são ilustrativas, do Unsplash.</p>
+</footer>
+
+<a class="pilula pilula--vinho flutuante" href="#agendar">Agendar <span class="pilula__icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="menu__caixa">
+    <div class="menu__topo">
+      <span class="mini" aria-hidden="true">N<i>2</i>Y</span>
+      <button class="menu__fechar" type="button" data-menu-fechar aria-label="Fechar menu">×</button>
+    </div>
+    <a class="pilula pilula--preta" href="#agendar">Agendar <span class="pilula__icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+    <a class="pilula pilula--branca" href="#duvidas">Tirar dúvidas</a>
+    <a class="pilula pilula--branca" href="#paredao">Ver trabalhos</a>
+    <a class="pilula pilula--branca" href="#servicos">Serviços</a>
+    <p class="menu__rodape">Alameda dos Tupiniquins, 1089 · Moema</p>
+  </div>
+</div>
+
+<script src="sites-incriveis.js"></script>
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* texto que acende: cada palavra vira um span com o seu índice */
+  document.querySelectorAll("[data-acende]").forEach(function (el) {
+    var i = 0;
+    (function andar(no) {
+      Array.prototype.slice.call(no.childNodes).forEach(function (filho) {
+        if (filho.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          filho.textContent.split(/(\s+)/).forEach(function (parte) {
+            if (!parte) return;
+            if (/^\s+$/.test(parte)) { frag.appendChild(document.createTextNode(parte)); return; }
+            var s = document.createElement("span");
+            s.className = "w";
+            s.style.setProperty("--i", i++);
+            s.textContent = parte;
+            frag.appendChild(s);
+          });
+          no.replaceChild(frag, filho);
+        } else if (filho.nodeType === 1) {
+          andar(filho);
+        }
+      });
+    })(el);
+    el.style.setProperty("--n", i);
+  });
+
+  /* faixas gigantes: andam com a rolagem, em sentidos alternados */
+  var faixas = document.querySelector(".faixas");
+  function atualizarFaixas() {
+    if (!faixas || reduzido) return;
+    var r = faixas.getBoundingClientRect();
+    var p = (innerHeight - r.top) / (innerHeight + r.height);
+    faixas.style.setProperty("--d", Math.max(0, Math.min(1, p)).toFixed(4));
+  }
+
+  /* topo claro sobre seções escuras + botão flutuante */
+  var escuras = Array.prototype.slice.call(document.querySelectorAll('[data-tom="escuro"]'));
+  var capa = document.getElementById("inicio");
+  var agendar = document.getElementById("agendar");
+  function atualizarTopo() {
+    var linha = 44;
+    var claro = escuras.some(function (s) { var r = s.getBoundingClientRect(); return r.top <= linha && r.bottom > linha; });
+    raiz.classList.toggle("topo-claro", claro);
+    var rc = capa.getBoundingClientRect(), ra = agendar.getBoundingClientRect();
+    raiz.classList.toggle("sem-flutuante", rc.bottom > innerHeight * 0.35 || (ra.top < innerHeight * 0.9 && ra.bottom > 0));
+  }
+
+  var pendente = false;
+  function aoRolar() {
+    if (pendente) return;
+    pendente = true;
+    requestAnimationFrame(function () { pendente = false; atualizarFaixas(); atualizarTopo(); });
+  }
+  window.addEventListener("scroll", aoRolar, { passive: true });
+  window.addEventListener("resize", aoRolar);
+  atualizarFaixas(); atualizarTopo();
+
+  /* menu */
+  var menu = document.getElementById("menu");
+  var abrir = document.querySelector("[data-menu-abrir]");
+  function definirMenu(aberto) {
+    raiz.classList.toggle("menu-aberto", aberto);
+    abrir.setAttribute("aria-expanded", String(aberto));
+    if (aberto) menu.querySelector("[data-menu-fechar]").focus();
+  }
+  abrir.addEventListener("click", function () { definirMenu(!raiz.classList.contains("menu-aberto")); });
+  menu.addEventListener("click", function (e) {
+    if (e.target === menu || e.target.closest("a, [data-menu-fechar]")) definirMenu(false);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && raiz.classList.contains("menu-aberto")) { definirMenu(false); abrir.focus(); }
+  });
+
+  /* agendamento pelo WhatsApp */
+  window.montarWhats = function (form) {
+    var servico = form.querySelector('[name="servico"]').value || "Quero ajuda para escolher o serviço";
+    var nome = (form.querySelector('[name="nome"]').value || "").trim();
+    var periodo = form.querySelector('[name="periodo"]').value;
+    var msg = "Olá! " + (nome ? "Sou " + nome + ". " : "") + "Quero agendar na Nails2You Moema.\nServiço: " + servico + (periodo ? "\nMelhor período: " + periodo : "");
+    return "https://wa.me/5511995533330?text=" + encodeURIComponent(msg);
+  };
+  var form = document.querySelector("#agendar form");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    window.open(window.montarWhats(form), "_blank", "noopener");
+  });
+  document.querySelectorAll("[data-servico]").forEach(function (a) {
+    a.addEventListener("click", function () { form.querySelector('[name="servico"]').value = a.dataset.servico; });
+  });
+})();
+</script>
+</body>
+</html>
